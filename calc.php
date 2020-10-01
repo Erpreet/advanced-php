@@ -32,6 +32,8 @@ if (!empty ($_GET))
   }
 }
 
+var_dump($result);
+
 
 ?>
 
