@@ -19,6 +19,22 @@ Class Snack
     {
         $this->calories *= 2;
     }
+
+    public function output()
+    {
+        ?>
+            <dl>
+            <dt>Snack Name </dt>
+            <dd> <?php echo $this.name; ?></dd>
+            <dt>Snack Type </dt>
+            <dd> <?php echo $this.type; ?></dd>
+            <dt>Snack Price </dt>
+            <dd> <?php echo $this.price; ?></dd>
+            <dt>Snack Calories </dt>
+            <dd> <?php echo $this.calories; ?></dd>
+            </dl>
+        <?php
+    }
 }
 
 $mySnack = new Snack ('Oh Henry', 'chocolate', 1.89, 200);
