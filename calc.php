@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+//need to run before any output
+
+if( !isset( $_SESSION['calcHistory']))
+{
+  $_SESSION['calcHistory'] = array();
+}
+
 // Try to avoid use of globals unless they are absolutely necessary...
 $GLOBALS['pageTitle'] = 'PHP Calculator';
 
@@ -18,18 +27,32 @@ if (!empty ($_GET))
   switch ($_GET['op'])
   {
     case 'addition':
+      $opSymbol = '+';
       $result = $_GET['value1'] + $_GET['value2'];
     break;
     case 'subtraction':
+      $opSymbol = '-';
       $result = $_GET['value1'] - $_GET['value2'];
     break;
     case 'multiplication':
+      $opSymbol = '&times;';
       $result = $_GET['value1'] * $_GET['value2'];
     break;
     case 'division':
+      $opSymbol = '&divide;';
       $result = $_GET['value1'] / $_GET['value2'];
     break;
   }
+  array_push (
+     $_SESSION['calcHistory'],
+    "{$_GET['value1']} {$opSymbol} {$_GET['value2']} = {$result}"
+    );
+
+
+    echo '<pre>';
+    var_dump($_SESSION);
+    var_dump($result);
+    echo '</pre>';
 }
 
 var_dump($result);
