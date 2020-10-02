@@ -12,10 +12,17 @@ Class Snack
         $this->name = $snackName;
         $this->type = $snackType;
         $this->price = number_format($snackPrice, 2, '.',',');
-        $this->calories = $snackCalories;
+        $this->calories = (integer) $snackCalories;
+    }
+
+    public function caramelize()
+    {
+        $this->calories *= 2;
     }
 }
 
 $mySnack = new Snack ('Oh Henry', 'chocolate', 1.89, 200);
 var_dump($mySnack);
 
+$mySnack->caramelize();
+var_dump($mySnack);
